@@ -74,8 +74,12 @@ WSGI_APPLICATION = 'WorldofRecipes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'recipes_db',
+	'USER': 'postgres',
+	'PASSWORD': 'stalker_',
+	'HOST': 'localhost',
+	'PORT': '5432',
     }
 }
 
