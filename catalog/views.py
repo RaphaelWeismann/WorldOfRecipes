@@ -1,11 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import redirect
-from django.template.loader import render_to_string
+from django.shortcuts import redirect, render
 
 def index(request):
-    t = render_to_string('catalog/index.html')
-    return HttpResponse(t)
+    return render(request, 'catalog/index.html')
 
 def categories(request, cat_id):
     return HttpResponse(f"<h1>Рецепты по категориям</h1><p>id:{cat_id}</p>")
