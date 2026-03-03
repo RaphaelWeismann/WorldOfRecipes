@@ -10,9 +10,9 @@ def categories(request, cat_id):
 
 def categories_by_slug(request, cat_slug):
     print(request.GET)
-    return HttpResponse(f"<h1>Рецепты по категориям</h1><p>slug:{cat_slug}</p?")
+    return HttpResponse(f"<h1>Рецепты по категориям</h1><p>slug:{cat_slug}</p>")
 
-def archive(self, year):
+def archive(request, year):
     if year > 2026:
         return redirect ('home')
     
