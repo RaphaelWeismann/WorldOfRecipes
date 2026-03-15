@@ -1,0 +1,27 @@
+{% load static %}
+{% load catalog_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title|capfirst}}</title>
+    <link rel="stylesheet" href="{% static 'catalog/css/style.css' %}">
+</head>
+<body>
+<ul>
+    <li><a href="{% url 'home' %}">Главная</a></li>
+    {% for m in menu %}
+    {% if not forloop.last %}
+        <li>
+    {% else %}
+        <li class="last">
+    {% endif %}
+    <a href="{% url m.url_name %}">{{m.title}}</a>
+    </li>
+    {% endfor %}   
+</ul>
+{% show_categories cat_selected %}
+{% block content %} {% endblock %}
+</body>
+</html>

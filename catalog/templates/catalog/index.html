@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device=width, initial-scale=1.0">
-    <title>Рецепты мира</title>
-</head>
-<body>
-    <h1>Главная страница</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+{% include 'catalog/includes/nav.html' %}
+
+<h1>{{title|capfirst}}</h1>
+<ul class="recipe-list">
+    {% for p in posts %}
+    {% if p.is_published %}
+    <li class="recipe-item">
+        {% autoescape off %}
+        <p>{{p.content | truncatewords:50}}</p>
+        {% endautoescape %}
+        <p><a href="{% url 'post' p.id %}" class="recipe-item__link">Читать пост</a></p>
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+{% include 'catalog/includes/nav.html' %}
+{% endblock %}
