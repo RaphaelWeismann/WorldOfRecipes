@@ -4,7 +4,6 @@
 
 <ul class="recipe-list">
     {% for p in posts %}
-    {% if p.is_published %}
     <li class="recipe-item">
         <h2>{{p.title}}</h2>
         {% autoescape off %}
@@ -13,7 +12,6 @@
         <div class="clear"></div>
         <p><a href="{{p.get_absolute_url}}" class="recipe-item__link">Читать пост</a></p>
     </li>
-    {% endif %}
     {% endfor %}
 </ul>
 
