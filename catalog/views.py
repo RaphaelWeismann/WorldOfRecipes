@@ -44,9 +44,10 @@ recipes_db = [
 
 
 def index(request):
+    posts = Recipe.objects.filter(is_published=1)
     data = {
         'title': 'главная страница',
-        'posts': recipes_db,
+        'posts': posts,
         'menu': menu,
         'cat_selected': 0,
         }
