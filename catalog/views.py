@@ -55,8 +55,8 @@ def index(request):
 def about(request):
     return render(request, 'catalog/about.html', {'title': 'О сайте', 'menu': menu})
 
-def show_post(request, post_id):
-    post = get_object_or_404(Recipe, pk=post_id)
+def show_post(request, post_slug):
+    post = get_object_or_404(Recipe, slug=post_slug)
     data = {
         'title': post.title,
         'menu':menu,
