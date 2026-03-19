@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import redirect, render
 from django.template.defaultfilters import slugify
-from .models import Recipe
+from .models import Recipe, Category
 
 menu = [{'title': "О сайте", 'url_name': 'about'},
         {'title': "Добавить статью", 'url_name': 'add_page'},
@@ -47,17 +47,13 @@ def login(request):
 def page_not_found(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
-def show_category(request, cat_id):
+def show_category(request, cat_slug):
+    category = get_object_or_404(Category, slug=cat_slug)
+    posts = Recipe.published.filter(cat_id=category.pk)
     data = {
-        'title': 'Отображение по категориям',
-        'posts': Recipe.published.all(),
+        'title': f'Рубрика: {category.name}',
+        'posts': posts,
         'menu': menu,
-        'cat_selected': cat_id,
+        'cat_selected': category.pk,
         }
     return render(request, 'catalog/index.html', context=data)
-
-cats_db = [
-    {'id': 1, 'name': 'Завтрак'},
-    {'id': 2, 'name': 'Обед'},
-    {'id': 3, 'name': 'Ужин'},
-]

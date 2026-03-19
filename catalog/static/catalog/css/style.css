@@ -292,3 +292,23 @@ img {
 .clear {
     clear: both;  
 }
+
+.article-panel {
+    background-color: #f0e0c8;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+}
+
+css.article-panel .first {
+    color: #7a3010;
+    font-weight: bold;
+    margin: 0;
+}
+
+css.article-panel .last {
+    color: #999;
+    margin: 0;
+}
