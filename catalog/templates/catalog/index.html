@@ -2,19 +2,18 @@
 {% block content %}
 {% include 'catalog/includes/nav.html' %}
 
-<ul class="recipe-list">
+<ul class="list-articles">
     {% for p in posts %}
-    <li class="recipe-item">
         <li><div class="article-panel">
         <p class="first">Категория: {{ p.cat }}</p>
-        <p clas="last">Дата: {{ p.time_update|date:"d-m-Y H:i:s"}}</p>
-    </div></li>
+        <p class="last">Дата: {{ p.time_update|date:"d-m-Y H:i:s"}}</p>
+    </div>
         <h2>{{p.title}}</h2>
         {% autoescape off %}
         <p>{{p.content | truncatewords:50}}</p>
         {% endautoescape %}
         <div class="clear"></div>
-        <p><a href="{{p.get_absolute_url}}" class="recipe-item__link">Читать пост</a></p>
+        <p class="link-read-post"><a href="{{p.get_absolute_url}}">Читать пост</a></p>
     </li>
     {% endfor %}
 </ul>
